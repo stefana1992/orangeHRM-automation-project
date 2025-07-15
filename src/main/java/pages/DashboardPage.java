@@ -50,4 +50,21 @@ public class DashboardPage {
         return header.isDisplayed();
     }
 
+    public void goToAddEmployeePage() {
+        // Wait for PIM menu to be clickable, then click
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(pimMenu)).click();
+
+        // Wait for Add Employee link to be clickable, then click
+        wait.until(ExpectedConditions.elementToBeClickable(addEmployeeLink)).click();
+    }
+
+    public void goToEmployeeListPage() {
+        // Wait for Employee List link to be clickable, then click
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(employeeListLink)).click();
+
+        // Wait until Employee Information header is visible to confirm page loaded
+        wait.until(ExpectedConditions.visibilityOf(employeeInformationHeader));
+    }
 }
